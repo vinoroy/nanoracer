@@ -1,0 +1,55 @@
+vince$ ssh jetbot@jetson-4-3.local
+
+pass : jetbot
+
+sudo reboot
+
+git add .
+git commit -m 'version 20.08.25'
+git push -u origin master
+
+
+
+
+# get the signal strength
+iwconfig wlan0 | grep -i --color quality
+
+# show the ip address
+ip addr show
+
+# to shutdown the jetson nano
+sudo shutdown now
+
+# to reboot
+sudo reboot
+
+# to list the videi device
+ls /dev/video0
+
+# to connect to the nano via the jupyterlab
+http://192.168.2.35:8888/lab?
+
+scp selectPoints_v2.ipynb jetbot@jetson-4-3.local:/home/jetbot/Documents/roboracer/
+
+scp jetbot@jetson-4-3.local:/home/jetbot/Documents/roboracer/trackImages.npy ./
+
+
+# get the path of the python interpreter
+import sys
+print(sys.executable)
+print(sys.version)
+print(sys.version_info)
+
+# get the tensorflow version
+import tensorflow as tf
+tf.__version__
+
+
+# run script with python3
+/usr/bin/python3 racerGetFrames.py
+/usr/bin/python3 racerGetFrames.py
+/usr/bin/python3 racerGetFrames.py 
+
+
+sudo systemctl stop jetbot_stats
+sudo systemctl disable jetbot_stats
